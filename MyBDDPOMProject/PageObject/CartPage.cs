@@ -72,6 +72,14 @@ namespace MyBDDPOMProject.PageObject
             int result = Int16.Parse(driver.FindElement(productOneQuantity).GetAttribute("value")) + Int16.Parse(driver.FindElement(productTwoQuantity).GetAttribute("value")) + Int16.Parse(driver.FindElement(productThreeQuantity).GetAttribute("value")) + Int16.Parse(driver.FindElement(productFourQuantity).GetAttribute("value"));
             Console.WriteLine("Total list of Items in Cart: " + result);
             Thread.Sleep(5000);
+
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            //string testresultpath = "C:/Users/LENOVO/source/repos/MyBDDPOMSolution/MyBDDPOMProject/TestResults/"
+            string testresultpath = projectDirectory + "/TestResults/";
+
+            //          string testresultpath = "C:/Users/LENOVO/source/repos/MyBDDPOMSolution/MyBDDPOMProject/TestResults/";
+            //Console.WriteLine(testresultpath);
             return result;
         }
 

@@ -14,7 +14,13 @@ namespace MyBDDPOMProject.Common
 
         public string takeScreenshot(IWebDriver driver, ScenarioContext sc)
         {
-            string testresultpath= "C:/Users/LENOVO/source/repos/MyBDDPOMSolution/MyBDDPOMProject/TestResults/";
+
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            //string testresultpath = "C:/Users/LENOVO/source/repos/MyBDDPOMSolution/MyBDDPOMProject/TestResults/"
+            string testresultpath = projectDirectory + "/TestResults/";
+            
+//          string testresultpath = "C:/Users/LENOVO/source/repos/MyBDDPOMSolution/MyBDDPOMProject/TestResults/";
             ITakesScreenshot screenshot = (ITakesScreenshot)driver;
             Screenshot scr = screenshot.GetScreenshot();
             string screenshotLocation = Path.Combine(testresultpath, sc.ScenarioInfo.Title + ".png");
